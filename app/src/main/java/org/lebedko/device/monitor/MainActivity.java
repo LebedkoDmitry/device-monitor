@@ -5,7 +5,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 
-import org.lebedko.device.monitor.adapter.ArticleAdapter;
+import org.lebedko.device.monitor.adapter.AccidentAdapter;
 import org.lebedko.device.monitor.service.ApiServiceConnection;
 
 public class MainActivity extends Activity {
@@ -13,7 +13,7 @@ public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
 
     private ApiServiceConnection mServiceConnection = new ApiServiceConnection();
-    private ArticleAdapter dataAdapter = new ArticleAdapter();
+    private AccidentAdapter dataAdapter = new AccidentAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);;
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        AccidentListFragment articleListFragment = new AccidentListFragment();
-        fragmentTransaction.replace(R.id.activity_main, articleListFragment);
+        AccidentListFragment accidentListFragment = new AccidentListFragment();
+        fragmentTransaction.replace(R.id.activity_main, accidentListFragment);
         fragmentTransaction.commit();
     }
 

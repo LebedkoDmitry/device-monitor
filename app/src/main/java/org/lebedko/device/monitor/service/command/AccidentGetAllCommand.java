@@ -17,7 +17,7 @@ public class AccidentGetAllCommand extends BaseApiCommand<ArrayList<Accident>> {
     @Override
     public ArrayList<Accident> call() throws Exception {
         Log.i(TAG, "call");
-        Response<RecordsDto> response = ApiBuilder.getInstance().articleApi.getData().execute();
+        Response<RecordsDto> response = ApiBuilder.getInstance().accidentApi.getData().execute();
         Log.i(TAG, "callAfterResponce");
         if (response.isSuccessful()) {
             return new ArrayList<>(response.body().getRecords());

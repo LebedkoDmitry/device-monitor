@@ -13,7 +13,7 @@ public class ApiBuilder {
     private static volatile ApiBuilder apiBuilder;
     private Retrofit retrofit;
 
-    public static AccidentApi articleApi;
+    public static AccidentApi accidentApi;
 
     private ApiBuilder(String host, Integer port) {
         retrofit = new Retrofit.Builder()
@@ -21,7 +21,7 @@ public class ApiBuilder {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        articleApi = retrofit.create(AccidentApi.class);
+        accidentApi = retrofit.create(AccidentApi.class);
     }
 
     public static ApiBuilder init(String host, Integer port) {

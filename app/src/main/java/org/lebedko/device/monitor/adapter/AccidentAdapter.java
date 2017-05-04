@@ -16,17 +16,17 @@ import java.util.List;
 import org.lebedko.device.monitor.R;
 import org.lebedko.device.monitor.dto.Accident;
 
-public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
-    private List<Accident> articlesList = new ArrayList<>();
+public class AccidentAdapter extends RecyclerView.Adapter<AccidentAdapter.AccidentViewHolder> {
+    private List<Accident> accidentList = new ArrayList<>();
 
     private final static int ACCIDENT = 1;
 
-    public class ArticleViewHolder extends RecyclerView.ViewHolder {
+    public class AccidentViewHolder extends RecyclerView.ViewHolder {
         private View view;
         public TextView name, context, accidentType, accident;
         public ImageView imageView;
 
-        public ArticleViewHolder(View view) {
+        public AccidentViewHolder(View view) {
             super(view);
             this.view = view;
             name = (TextView) view.findViewById(R.id.deviceName);
@@ -37,38 +37,38 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         }
     }
 
-    public class AdvertiseViewHolder extends ArticleViewHolder {
+    public class AdvertiseViewHolder extends AccidentViewHolder {
         public AdvertiseViewHolder(View view) {
             super(view);
         }
     }
 
-    public void setData(List<Accident> articlesList) {
-        this.articlesList = articlesList;
+    public void setData(List<Accident> accidentList) {
+        this.accidentList = accidentList;
     }
 
     @Override
-    public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AccidentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.article_item, parent, false);
+                .inflate(R.layout.accident_item, parent, false);
 
-        return new ArticleViewHolder(itemView);
+        return new AccidentViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ArticleViewHolder holder, int position) {
-        Accident article = articlesList.get(position);
-        holder.name.setText(article.getDeviceName());
-        holder.context.setText(article.getReceiveTime());
-        holder.accidentType.setText(article.getAccidentType());
-        holder.accident.setText(article.getAccident());
+    public void onBindViewHolder(AccidentViewHolder holder, int position) {
+        Accident accident = accidentList.get(position);
+        holder.name.setText(accident.getDeviceName());
+        holder.context.setText(accident.getReceiveTime());
+        holder.accidentType.setText(accident.getAccidentType());
+        holder.accident.setText(accident.getAccident());
         Context appContext = holder.view.getContext();
         Picasso.with(appContext).load(
                 appContext.getResources().getString(R.string.host)
                         + ':'
                         + appContext.getResources().getInteger(R.integer.port)
                         + appContext.getResources().getString(R.string.resources)
-                        + article.getAccidentType()
+                        + accident.getAccidentType()
                         + ".png")
                 .into(holder.imageView);
     }
@@ -80,6 +80,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     @Override
     public int getItemCount() {
-        return articlesList.size();
+        return accidentList.size();
     }
 }

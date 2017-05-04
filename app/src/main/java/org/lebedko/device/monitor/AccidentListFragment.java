@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import org.lebedko.device.monitor.adapter.ArticleAdapter;
+import org.lebedko.device.monitor.adapter.AccidentAdapter;
 import org.lebedko.device.monitor.dto.Accident;
 import org.lebedko.device.monitor.service.ApiService;
 import org.lebedko.device.monitor.service.ApiServiceConnection;
@@ -28,7 +28,7 @@ public class AccidentListFragment extends Fragment implements View.OnClickListen
 
     public static final String SERVICE_CONNECTION_STR = "SERVICE_CONNECTION_STR";
 
-    private ArticleAdapter dataAdapter = new ArticleAdapter();
+    private AccidentAdapter dataAdapter = new AccidentAdapter();
 
     private ApiServiceConnection mServiceConnection = new ApiServiceConnection();
 
