@@ -1,14 +1,16 @@
 package org.lebedko.device.monitor;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import org.lebedko.device.monitor.adapter.AccidentAdapter;
 import org.lebedko.device.monitor.service.ApiServiceConnection;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
@@ -21,7 +23,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);;
 
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.mainToolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        FragmentTransaction fragmentTransaction =  getSupportFragmentManager().beginTransaction();
         AccidentListFragment accidentListFragment = new AccidentListFragment();
         fragmentTransaction.replace(R.id.activity_main, accidentListFragment);
         fragmentTransaction.commit();

@@ -1,6 +1,8 @@
 package org.lebedko.device.monitor.dto;
 
-public class Accident {
+import java.io.Serializable;
+
+public class Accident implements Serializable {
 
     public Accident() {
     }
