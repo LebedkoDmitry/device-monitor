@@ -29,7 +29,8 @@ public class AccidentAdapter extends RecyclerView.Adapter<AccidentAdapter.Accide
 
     private List<Accident> accidentList = new ArrayList<>();
 
-    private final static int ACCIDENT = 1;
+    private final static int ACCIDENT_OK = 1;
+    private final static int ACCIDENT_ERROR = 2;
 
     public class AccidentViewHolder extends RecyclerView.ViewHolder {
         private View view;
@@ -43,7 +44,7 @@ public class AccidentAdapter extends RecyclerView.Adapter<AccidentAdapter.Accide
             context = (TextView) view.findViewById(R.id.receiveTime);
             accidentType = (TextView) view.findViewById(R.id.accidentType);
             accident = (TextView) view.findViewById(R.id.accident);
-            //imageView = (ImageView) view.findViewById(R.id.imageView);
+            imageView = (ImageView) view.findViewById(R.id.imageView);
         }
     }
 
@@ -61,7 +62,10 @@ public class AccidentAdapter extends RecyclerView.Adapter<AccidentAdapter.Accide
     public AccidentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.accident_item, parent, false);
-
+        if (viewType == ACCIDENT_ERROR) {
+            itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.accident_error_item, parent, false);
+        }
         return new AccidentViewHolder(itemView);
     }
 
@@ -89,19 +93,22 @@ public class AccidentAdapter extends RecyclerView.Adapter<AccidentAdapter.Accide
             }
         });
         Context appContext = holder.view.getContext();
-        /*Picasso.with(appContext).load(
+        Picasso.with(appContext).load(
                 appContext.getResources().getString(R.string.host)
                         + ':'
                         + appContext.getResources().getInteger(R.integer.port)
                         + appContext.getResources().getString(R.string.resources)
-                        + accident.getAccidentType()
+                        + accident.getAccidentSeverity()
                         + ".png")
-                .into(holder.imageView);*/
+                .into(holder.imageView);
     }
 
     @Override
     public int getItemViewType(int position) {
-        return ACCIDENT;
+        if (accidentList.get(position).getAccidentSeverity() == 2) {
+            return ACCIDENT_ERROR;
+        }
+        return ACCIDENT_OK;
     }
 
     @Override

@@ -1,12 +1,16 @@
 package org.lebedko.device.monitor;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.lebedko.device.monitor.dto.Accident;
 
@@ -35,10 +39,23 @@ public class DetailsFragment extends Fragment {
         Accident accident = (Accident) getArguments().getSerializable(ACCIDENT_KEY);
         TextView detailsNameTextView = (TextView) view.findViewById(R.id.detailsName);
         detailsNameTextView.setText(accident.getDeviceName());
+        TextView detailsAccidentTypeTextView = (TextView) view.findViewById(R.id.detailsAccidentType);
+        detailsAccidentTypeTextView.setText(accident.getAccidentType());
         TextView detailsDescriptionTextView = (TextView) view.findViewById(R.id.detailsDescription);
         detailsDescriptionTextView.setText(accident.getAccident());
         TextView detailsEventTimeTextView = (TextView) view.findViewById(R.id.detailsEventTime);
         detailsEventTimeTextView.setText(accident.getReceiveTime());
+
+        ImageView imageView = (ImageView) view.findViewById(R.id.detailsImageView);
+        Context appContext = view.getContext();
+        Picasso.with(appContext).load(
+                appContext.getResources().getString(R.string.host)
+                        + ':'
+                        + appContext.getResources().getInteger(R.integer.port)
+                        + appContext.getResources().getString(R.string.resources)
+                        + accident.getAccidentSeverity()
+                        + ".png")
+                .into(imageView);
         return view;
     }
 

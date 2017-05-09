@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorOk"
+    android:background="@color/colorError"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,7 +21,6 @@
             android:id="@+id/deviceName"
             android:textSize="16dp"
             android:textStyle="bold"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -36,11 +35,11 @@
 
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/receiveTime"
         android:layout_below="@id/titleData"
         android:layout_width="match_parent"
+        android:background="@color/colorError"
         android:gravity="center"
         android:textSize="15dp"
         android:layout_height="wrap_content" />

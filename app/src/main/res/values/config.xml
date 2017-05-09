@@ -2,5 +2,5 @@
 <resources>
     <string name="host">http://armada-traffic.relex.ru</string>
     <integer name="port">51145</integer>
-    <string name="resources">/resources/articles/</string>
+    <string name="resources">/nms-webapp/resources/</string>
 </resources>

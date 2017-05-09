@@ -13,6 +13,8 @@ public class Accident implements Serializable {
 
     private String receiveTime;
 
+    private int accidentSeverity = 1;
+
     private String accidentType;
 
     private String accident;
@@ -47,5 +49,13 @@ public class Accident implements Serializable {
 
     public void setAccident(String accident) {
         this.accident = accident;
+    }
+
+    public int getAccidentSeverity() {
+        return accidentSeverity;
+    }
+
+    public void setAccidentSeverity(int accidentSeverity) {
+        this.accidentSeverity = accidentSeverity;
     }
 }
